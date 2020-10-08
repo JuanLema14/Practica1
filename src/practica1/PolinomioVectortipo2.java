@@ -20,6 +20,19 @@ public class PolinomioVectortipo2 {
     }
     
     public String mostrarp(){
-        
+        StringBuilder polinomio = new StringBuilder();
+        if(datosP==null){
+            return"0";
+        }
+        for(Termino t1 : datosP){
+            double c =t1.getCoeficiente();
+            int e=t1.getExponente();
+            
+            if(c>=0){
+                polinomio.append("+");
+            }
+            polinomio.append(c).append("X^").append(e).append(" ");
+        }
+        return polinomio.toString();
     }
 }
