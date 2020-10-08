@@ -27,7 +27,7 @@ public class Termino {
      *
      * @return
      */
-    public int getE() {
+    public int getExponente() {
         return e;
     }
 
@@ -36,7 +36,7 @@ public class Termino {
      *
      * @param e
      */
-    public void setE(int e) {
+    public void setExponente(int e) {
         this.e = e;
     }
 
@@ -45,7 +45,7 @@ public class Termino {
      *
      * @return
      */
-    public double getC() {
+    public double getCoeficiente() {
         return c;
     }
 
@@ -54,7 +54,7 @@ public class Termino {
      *
      * @param c
      */
-    public void setC(double c) {
+    public void setCoeficiente(double c) {
         this.c = c;
     }
 
