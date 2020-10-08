@@ -8,7 +8,7 @@ package polinomioTermino;
 /**
  * Almacenar los datos de un termino en la representación de un polinomio.
  *
- * @author alejandroescobar
+ * 
  */
 public class Termino {
 
