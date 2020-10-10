@@ -35,4 +35,16 @@ public class PolinomioVectortipo2 {
         }
         return polinomio.toString();
     }
+    
+    public static String GetNumeros(String p){
+        char[] polinomio= p.toCharArray();
+        String n= "";
+        for(int i=0;i<polinomio.length;i++){
+            if(Character.isDigit(polinomio[i])){
+                n+=polinomio[i];
+            }
+        }
+        return n;
+    }
+    
 }
