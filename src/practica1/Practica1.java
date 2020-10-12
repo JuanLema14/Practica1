@@ -6,7 +6,7 @@ public class Practica1 {
         double[] polinomix;
         PolinomioVectortipo2 objt=new PolinomioVectortipo2();
         
-        polinomix=PolinomioVectortipo2.crearVector("2x^1-3x^2+4x^4");
+        polinomix=PolinomioVectortipo2.crearVector("24x^23-4x^3");
         boolean ve=objt.verificarExponente(polinomix);
         System.out.println(ve);
         
