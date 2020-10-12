@@ -4,11 +4,16 @@ public class PolinomioVectortipo2 {
     
     public static double[] crearVector(String p){
         p= p.toLowerCase();
-        char[] cadena= p.toCharArray();
         double[]polinomioV=new double [100];
         String coheficiente="", exponente="";
-        int m=0,j=0;
-        for(int i=1;i<cadena.length;i++){
+        int m=0,j=0, x=1;
+        char[] cadena=new char[p.length()+1];
+        cadena[0]=(char) m;
+        while (x < p.length()) {
+            cadena[x]=p.charAt(x-1);
+            x++;
+        }
+        for(int i=1;i<=cadena.length;i++){
             
             if(!(Character.isDigit(cadena[i]))){
                 if(cadena[i]=='-'){
@@ -19,17 +24,24 @@ public class PolinomioVectortipo2 {
             }else if(Character.isDigit(cadena[i])){
                 if(cadena[i-1]=='^'){
                     
-                    do{
+                   do{
                         exponente+=Character.toString(cadena[i]);
                         i++;
                     }while(Character.isDigit(cadena[i]));
 
+                    /*while(Character.isDigit(cadena[i])){
+                       exponente+=Character.toString(cadena[i]);
+                        i++; 
+                    }*/
+
                     polinomioV[j+1]=Integer.parseInt(exponente);
+                    System.out.println(polinomioV[j+1]);
                     polinomioV[j+2]=Double.parseDouble(coheficiente);
+                    System.out.println(polinomioV[j+2]);
                     j+=2;
                     m+=1;
                 }else{
-                    coheficiente+=cadena[i];
+                    coheficiente+=Character.toString(cadena[i]);
                 }
             }
         }
