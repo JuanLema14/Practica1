@@ -48,5 +48,19 @@ public class PolinomioVectortipo2 {
         }
         return v;
     }
+    public static void Multiplicar(double[]PolinomioA, double[]PolinomioB){
+        double[] PolinomioC=null;
+        int mayor=0,menor=0;
+        if(PolinomioA.length-1<PolinomioB.length-1){
+            menor=PolinomioA.length-1;
+            mayor=PolinomioB.length-1;
+        }else{
+            menor=PolinomioB.length-1;
+            mayor=PolinomioA.length-1;
+        }
+        for(int i=2;i<menor;i+=2){
+            
+        }
+    }
   
 }
