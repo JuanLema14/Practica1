@@ -36,12 +36,12 @@ public class PolinomioVectortipo2 {
         return polinomio.toString();
     }
     
-    public static double convertirCadena(String p){
+    public static double[] convertirCadena(String p){
         p= p.toLowerCase();
         char[] cadena= p.toCharArray();
-        double[]polinomio={};
-        String c=" ";
-        int m=0;
+        double[]polinomioV={};
+        String c="", e="";
+        int m=0,j=0;
         for(int i=1;i<cadena.length;i++){
             
             if(!(Character.isDigit(cadena[i]))){
@@ -49,22 +49,23 @@ public class PolinomioVectortipo2 {
                     c="-";
                 }else if(cadena[i]=='x' && !(Character.isDigit(cadena[i-1]))){
                     c+="1";
-                    polinomio[i]=Double.parseDouble(c);
-                    m+=1;
                 }
             }else if(Character.isDigit(cadena[i])){
                 if(cadena[i-1]=='^'){
-                    c+=cadena[i];
-                    polinomio[i]=Double.parseDouble(c);
+                    do{
+                        e+=cadena[i];
+                        i++;
+                    }while(Character.isDigit(cadena[i]));
+                    polinomioV[j+1]=Integer.parseInt(e);
+                    polinomioV[j+2]=Double.parseDouble(c);
+                    j+=2;
+                    m+=1;
                 }else{
                     c+=cadena[i];
-                    polinomio[i]=Double.parseDouble(c);
-                    m+=1;
                 }
             }
         }
-        polinomio[0]=m;
-        return polinomio[];
+        return polinomioV;
     }
     
 }
