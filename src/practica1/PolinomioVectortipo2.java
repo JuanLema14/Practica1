@@ -3,7 +3,7 @@ package practica1;
 
 public class PolinomioVectortipo2 {
     
-    public static double[] ingresarPolinomio(String p){
+    public static double[] crearVector(String p){
         p= p.toLowerCase();
         char[] cadena= p.toCharArray();
         double[]polinomioV={};
@@ -23,9 +23,6 @@ public class PolinomioVectortipo2 {
                         ex+=cadena[i];
                         i++;
                     }while(Character.isDigit(cadena[i]));
-                    for(int k=1;k<polinomioV.length;k+=2){
-                        
-                    }
                     polinomioV[j+1]=Integer.parseInt(ex);
                     polinomioV[j+2]=Double.parseDouble(co);
                     j+=2;
@@ -37,6 +34,17 @@ public class PolinomioVectortipo2 {
         }
         polinomioV[0]=m;
         return polinomioV;
+    }
+    
+    public static boolean verificarExponente(double[] polinomioEx){
+        boolean v=true;
+        double[] polinomioE=polinomioEx;
+        for(int i=1;i<polinomioE.length;i+=2){
+            for(int j=1;(polinomioE[i]==polinomioE[j])&&(i!=j);j+=2){
+                return v=false;
+            } 
+        }
+        return v;
     }
     
 }
