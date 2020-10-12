@@ -9,7 +9,7 @@ public class PolinomioVectortipo2 {
         int m=0,j=0, x=1;
         char[] cadena=new char[p.length()+1];
         cadena[0]=(char) m;
-        while (x < p.length()) {
+        while (x <= p.length()) {
             cadena[x]=p.charAt(x-1);
             x++;
         }
