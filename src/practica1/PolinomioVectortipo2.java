@@ -23,6 +23,9 @@ public class PolinomioVectortipo2 {
                         ex+=cadena[i];
                         i++;
                     }while(Character.isDigit(cadena[i]));
+                    for(int k=1;k<polinomioV.length;k+=2){
+                        
+                    }
                     polinomioV[j+1]=Integer.parseInt(ex);
                     polinomioV[j+2]=Double.parseDouble(co);
                     j+=2;
