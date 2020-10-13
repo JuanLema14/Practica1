@@ -51,13 +51,21 @@ public class PolinomioVectortipo2 {
     }
     
 public static boolean verificarExponente(double[] polinomioEx){
-        boolean v=true;
-        double[] polinomioE=polinomioEx;
-        for(int i=1;i<polinomioE.length;i+=2){
-            for(int j=1;(polinomioE[i]==polinomioE[j])&&(i!=j);j+=2){
-                return v=false;
-            } 
-        }
+        boolean v=true, bandera=true;
+        int i=1,j=3;
+        do{
+            if(polinomioEx[i]==polinomioEx[j]){
+                bandera=v=false;
+            }else{
+                if(j<=polinomioEx.length-1){
+                    j+=2;
+                }else if(i<=polinomioEx.length-1){
+                    i+=2;
+                    j=3;
+                }
+            }
+        }while(bandera==true);
+        
         return v;
     }
     public static double[] Multiplicar(double[]PolinomioA, double[]PolinomioB){
