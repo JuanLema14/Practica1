@@ -16,20 +16,18 @@ public class PolinomioVectortipo2 {
         for(int i=1;i<=cadena.length;i++){
             
             if(!(Character.isDigit(cadena[i]))){
-               /* if(cadena[i]=='-'){
+               if(cadena[i]=='-'){
                     coeficiente="-";
-                }else */if(cadena[i]=='x' && !(Character.isDigit(cadena[i-1]))){
+                }else if(cadena[i]=='x' && !(Character.isDigit(cadena[i-1]))){
                     coeficiente+="1";
                 }
             }else if(Character.isDigit(cadena[i])){
-                if(cadena[i]=='-'){
-                    coeficiente="-";
-                }else if(cadena[i-1]=='^'){
+                if(cadena[i-1]=='^'){
                     
-                  /* do{
+                   do{
                        exponente+=Character.toString(cadena[i]);
-                       i++;
-                    }while(Character.isDigit(cadena[i]));*/
+                        i++;   
+                    }while(Character.isDigit(cadena[i]));
 
                     /*while(Character.isDigit(cadena[i])){
                        exponente+=Character.toString(cadena[i]);
@@ -78,6 +76,26 @@ public class PolinomioVectortipo2 {
         for(int i=2;i<menor;i+=2){
             
         }
+    }
+    public static double[] Derivar(double [] polinomioD){
+        double[] polinomioR=null;
+        double auxE,auxC;
+        for(int i=1;i<=polinomioD.length;i++){
+            auxC=polinomioD[i+1]*polinomioD[i];
+            auxE=polinomioD[i]-1;
+            
+            polinomioR[i]=auxE;
+            polinomioR[i+1]=auxC;
+        }
+        return polinomioR;
+    }
+    
+    public static double evaluar(double[] polinomioEV,double x){
+        double valorF=0;
+        for(int i=1;i<=polinomioEV.length;i++){
+            valorF=valorF+(polinomioEV[i+1]*(Math.pow(x,polinomioEV[i])));
+        }
+        return valorF;
     }
   
 }
