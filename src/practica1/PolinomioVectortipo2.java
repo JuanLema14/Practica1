@@ -4,6 +4,7 @@ public class PolinomioVectortipo2 {
     
     public static double[] crearVector(String p){
         p= p.toLowerCase();
+        System.out.println(p.replace(" ", ""));
         double[]polinomioV=new double [100];
         String coeficiente="", exponente="";
         int m=0,j=0, x=1;
