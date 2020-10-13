@@ -2,10 +2,9 @@ package practica1;
 
 public class PolinomioVectortipo2 {
     
-    public static double[] crearVector(String p){
+        public static double[] crearVector(String p){
         p= p.toLowerCase();
-        System.out.println(p.replace(" ", ""));
-        double[]polinomioV=new double [100];
+        double[]polinomioV=new double[100];
         String coeficiente="", exponente="";
         int m=0,j=0, x=1;
         char[] cadena=new char[p.length()+1];
@@ -18,9 +17,47 @@ public class PolinomioVectortipo2 {
             
             if(!(Character.isDigit(cadena[i]))){
                if(cadena[i]=='-'){
-                    coeficiente="-";
+                   if(cadena[i-1]=='^'){
+                       exponente+="-";
+                       i++;
+                       while(i<cadena.length && Character.isDigit(cadena[i])){
+                           exponente+=Character.toString(cadena[i]);
+                           if(i==cadena.length){
+                                break;
+                           }else{
+                                i++;
+                           }
+                       }
+                       polinomioV[j+1]=Integer.parseInt(exponente);
+                       exponente="";
+                       polinomioV[j+2]=Double.parseDouble(coeficiente);
+                       coeficiente="";
+                       i=i-1;
+                       j+=2;
+                       m+=1;
+                   }else{
+                       coeficiente="-";   
+                   }
                 }else if(cadena[i]=='x' && !(Character.isDigit(cadena[i-1]))){
                     coeficiente+="1";
+                }else if(i<cadena.length && cadena[i]=='x'){
+                    if(i==cadena.length-1){
+                        exponente+="1";
+                        polinomioV[j+1]=Integer.parseInt(exponente);
+                        exponente="";
+                        polinomioV[j+2]=Double.parseDouble(coeficiente);
+                        coeficiente="";
+                        j+=2;
+                        m+=1;
+                    }else if(cadena[i+1]!='^'){
+                        exponente+="1";
+                        polinomioV[j+1]=Integer.parseInt(exponente);
+                        exponente="";
+                        polinomioV[j+2]=Double.parseDouble(coeficiente);
+                        coeficiente="";
+                        j+=2;
+                        m+=1;
+                    }
                 }
             }else if(Character.isDigit(cadena[i])){
                 if(cadena[i-1]=='^'){
@@ -35,14 +72,30 @@ public class PolinomioVectortipo2 {
                     }while(i<cadena.length && Character.isDigit(cadena[i]));
 
                     polinomioV[j+1]=Integer.parseInt(exponente);
-                    System.out.println(polinomioV[j+1]);
+                    exponente="";
                     polinomioV[j+2]=Double.parseDouble(coeficiente);
-                    System.out.println(polinomioV[j+2]);
+                    coeficiente="";
                     i=i-1;
                     j+=2;
                     m+=1;
                 }else{
-                    coeficiente+=Character.toString(cadena[i]);
+                    do{
+                        coeficiente+=Character.toString(cadena[i]);
+                        if(i==cadena.length){
+                           break;
+                       }else{
+                           i++;
+                       }
+                    }while(i<cadena.length && Character.isDigit(cadena[i]));
+                    i=i-1;
+                    if(i==cadena.length-1 || cadena[i+1]=='-' || cadena[i+1]=='+'){
+                        polinomioV[j+1]=0;
+                        exponente="";
+                        polinomioV[j+2]=Double.parseDouble(coeficiente);
+                        coeficiente="";
+                        j+=2;
+                        m+=1;
+                    }
                 }
             }
         }
