@@ -7,7 +7,7 @@ static Scanner leer =new Scanner(System.in);
         String Polinomio="";
         int CantidadEvaluar=0,cantpol=0,i=0;
         boolean verificar=true;
-        double[] polinomix;
+        double[] polinomix=null, polinomioD=null,polinomioM=null;
         PolinomioVectortipo2 objt=new PolinomioVectortipo2();
         
         do{
@@ -26,24 +26,45 @@ static Scanner leer =new Scanner(System.in);
                         }else{
                             i++;
                         }
-                        double[] polinomios=new double[cantpol];
-                        //polinomios[i]=polinomix[];
+                        double[][] polinomios=new double[cantpol][1];
+                        polinomios[cantpol][1]=polinomix[];
                     }
                     break;
                 case '2':
+                    if(polinomix!=null){
+                        polinomioM=objt.Multiplicar(,);
+                    }else{
+                        System.out.println("aun no ingresa los polinomios");
+                    }
                     break;
                 case '3':
+                    if(polinomix!=null){
+                        polinomioD=objt.Derivar();
+                    }else{
+                        System.out.println("aun no ingresa los polinomios");
+                    }
                     break;
                 case '4':
+                    if(polinomix!=null){
+                        double x=0;
+                        System.out.println("Ingrese el numero a evaluar de X");
+                        x=leer.nextDouble();
+                        CantidadEvaluar=objt.evaluar(, );
+                    }else{
+                        System.out.println("aun no ingresa los polinomios");
+                    }
                     break;
                 case '5':
+                    if(polinomix!=null){
+                        
+                    }else{
+                        System.out.println("aun no ingresa los polinomios");
+                    }
                     break;
                 case '6':
                     break;
             }
-        }while(opc!='6');
-        
-        
+        }while(opc!='6'); 
         
     }
     static char menu(){
