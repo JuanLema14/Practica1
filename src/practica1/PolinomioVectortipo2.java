@@ -13,7 +13,7 @@ public class PolinomioVectortipo2 {
             cadena[x]=p.charAt(x-1);
             x=x+1;
         }
-        for(int i=1;i<=cadena.length;i++){
+        for(int i=1;i<cadena.length;i++){
             
             if(!(Character.isDigit(cadena[i]))){
                if(cadena[i]=='-'){
@@ -26,16 +26,12 @@ public class PolinomioVectortipo2 {
                     
                    do{
                        exponente+=Character.toString(cadena[i]);
-                        i++;   
-                    }while(Character.isDigit(cadena[i]));
-
-                    /*while(Character.isDigit(cadena[i])){
-                       exponente+=Character.toString(cadena[i]);
-                       i++;  
-                    }*/
-                    /*for(i=i;Character.isDigit(cadena[i]);i++){
-                        exponente+=Character.toString(cadena[i]);
-                    }*/
+                       if(i==cadena.length){
+                           break;
+                       }else{
+                           i++;
+                       }
+                    }while(i<cadena.length && Character.isDigit(cadena[i]));
 
                     polinomioV[j+1]=Integer.parseInt(exponente);
                     System.out.println(polinomioV[j+1]);
@@ -53,7 +49,7 @@ public class PolinomioVectortipo2 {
         return polinomioV;
     }
     
-    public static boolean verificarExponente(double[] polinomioEx){
+public static boolean verificarExponente(double[] polinomioEx){
         boolean v=true;
         double[] polinomioE=polinomioEx;
         for(int i=1;i<polinomioE.length;i+=2){
@@ -63,9 +59,11 @@ public class PolinomioVectortipo2 {
         }
         return v;
     }
-    public static void Multiplicar(double[]PolinomioA, double[]PolinomioB){
+    public static double[] Multiplicar(double[]PolinomioA, double[]PolinomioB){
         double[] PolinomioC=null;
-        int mayor=0,menor=0;
+        double AuxC=0,AuxE=0;
+        int mayor=0,menor=0,i=2,j=2;
+        boolean bandera=true;
         if(PolinomioA.length-1<PolinomioB.length-1){
             menor=PolinomioA.length-1;
             mayor=PolinomioB.length-1;
@@ -73,10 +71,42 @@ public class PolinomioVectortipo2 {
             menor=PolinomioB.length-1;
             mayor=PolinomioA.length-1;
         }
-        for(int i=2;i<menor;i+=2){
-            
-        }
+        do{
+            if(PolinomioA.length-1==menor){
+                if(j<=PolinomioB.length-1){
+                    AuxC=PolinomioA[i]*PolinomioB[j];
+                    AuxE=PolinomioA[i-1]+PolinomioB[j-1];
+                    j+=2;
+                    
+                }else{
+                    i+=2;
+                }
+                PolinomioC[j]=AuxC;
+                PolinomioC[j-1]=AuxE;
+            }else if(PolinomioA.length-1==PolinomioB.length-1){
+                if(j<=PolinomioB.length-1){
+                    AuxC=PolinomioA[j]*PolinomioB[j];
+                    AuxE=PolinomioA[j-1]+PolinomioB[j-1];
+                    j+=2;
+                }
+                PolinomioC[j]=AuxC;
+                PolinomioC[j-1]=AuxE;
+            }else{
+                if(j<=PolinomioA.length-1){
+                    AuxC=PolinomioA[j]*PolinomioB[i];
+                    AuxE=PolinomioA[j-1]+PolinomioB[i-1];
+                    j+=2;
+                    
+                }else{
+                    i+=2;
+                }
+                PolinomioC[j]=AuxC;
+                PolinomioC[j-1]=AuxE;
+            }
+        }while(bandera=false);
+        return PolinomioC;
     }
+    
     public static double[] Derivar(double [] polinomioD){
         double[] polinomioR=null;
         double auxE,auxC;
