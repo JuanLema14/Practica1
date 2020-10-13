@@ -62,7 +62,8 @@ public static boolean verificarExponente(double[] polinomioEx){
     public static double[] Multiplicar(double[]PolinomioA, double[]PolinomioB){
         double[] PolinomioC=null;
         double AuxC=0,AuxE=0;
-        int mayor=0,menor=0,i=2,j=2;
+        int mayor=0,menor=0,i=2,j=2,m=0;
+        PolinomioC[0]=m;
         boolean bandera=true;
         if(PolinomioA.length-1<PolinomioB.length-1){
             menor=PolinomioA.length-1;
@@ -76,34 +77,46 @@ public static boolean verificarExponente(double[] polinomioEx){
                 if(j<=PolinomioB.length-1){
                     AuxC=PolinomioA[i]*PolinomioB[j];
                     AuxE=PolinomioA[i-1]+PolinomioB[j-1];
+                    
+                    PolinomioC[j]=AuxC;
+                    PolinomioC[j-1]=AuxE;
+                    m+=1;
                     j+=2;
                     
-                }else{
+                }else if(i<=PolinomioA.length-1){
                     i+=2;
+                    j=2;
                 }
-                PolinomioC[j]=AuxC;
-                PolinomioC[j-1]=AuxE;
+
             }else if(PolinomioA.length-1==PolinomioB.length-1){
                 if(j<=PolinomioB.length-1){
                     AuxC=PolinomioA[j]*PolinomioB[j];
                     AuxE=PolinomioA[j-1]+PolinomioB[j-1];
+                    
+                    PolinomioC[j]=AuxC;
+                    PolinomioC[j-1]=AuxE;
+                    m+=1;
                     j+=2;
                 }
-                PolinomioC[j]=AuxC;
-                PolinomioC[j-1]=AuxE;
             }else{
                 if(j<=PolinomioA.length-1){
                     AuxC=PolinomioA[j]*PolinomioB[i];
                     AuxE=PolinomioA[j-1]+PolinomioB[i-1];
+                    
+                    PolinomioC[j]=AuxC;
+                    PolinomioC[j-1]=AuxE;
+                    m+=1;
                     j+=2;
                     
-                }else{
+                }else if(i<=PolinomioB.length-1){
                     i+=2;
-                }
-                PolinomioC[j]=AuxC;
-                PolinomioC[j-1]=AuxE;
+                    j=2;
+                } 
             }
-        }while(bandera=false);
+            if(i==PolinomioA.length-1 || i==PolinomioB.length-1){
+                    bandera=false;
+            }
+        }while(bandera==true);
         return PolinomioC;
     }
     
