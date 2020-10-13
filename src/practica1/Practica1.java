@@ -4,7 +4,9 @@ public class Practica1 {
 static Scanner leer =new Scanner(System.in);
     public static void main(String[] args) {
         char opc=' ';
-        int CantidadEvaluar=0;
+        String Polinomio="";
+        int CantidadEvaluar=0,cantpol=0,i=0;
+        boolean verificar=true;
         double[] polinomix;
         PolinomioVectortipo2 objt=new PolinomioVectortipo2();
         
@@ -12,6 +14,21 @@ static Scanner leer =new Scanner(System.in);
             opc=menu();
             switch(opc){
                 case '1':
+                    System.out.println("Ingrese la cantidad de polinomios a agregar (Minimo 10)");
+                    cantpol=leer.nextInt();
+                    while(i<=cantpol){
+                        System.out.println("Ingrese un polinomio(recuerde no repetir exponentes ni usar exponente 0)");
+                        Polinomio=leer.nextLine();
+                        polinomix=objt.crearVector(Polinomio);
+                        verificar=objt.verificarExponente(polinomix);
+                        if(verificar==false){
+                            System.out.println("Recuerde no ingresar exponentes repetidos");
+                        }else{
+                            i++;
+                        }
+                        double[] polinomios=new double[cantpol];
+                        //polinomios[i]=polinomix[];
+                    }
                     break;
                 case '2':
                     break;
