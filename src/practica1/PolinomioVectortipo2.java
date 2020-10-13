@@ -140,5 +140,23 @@ public static boolean verificarExponente(double[] polinomioEx){
         }
         return valorF;
     }
+    public static void normalizar(double[]polinomioCN){
+        int j=1;
+        double auxA=0;
+        for(int i=1;i<=polinomioCN.length-1;i+=2){
+            if(polinomioCN[j]==polinomioCN[i]){
+                polinomioCN[j]=polinomioCN[j]+polinomioCN[i];
+                while(i>=j){
+                    auxA=polinomioCN[i-1];
+                    polinomioCN[i-1]=polinomioCN[i];
+                    i--;
+                }
+                
+            }else if(i==polinomioCN.length-1 && j<=polinomioCN.length-1){
+                j+=2;
+                i=1;
+            }
+        }
+    }
   
 }
