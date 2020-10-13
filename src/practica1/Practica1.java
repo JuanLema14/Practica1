@@ -32,7 +32,7 @@ static Scanner leer =new Scanner(System.in);
     static char menu(){
         char opcion;
         System.out.println("1. Ingresar Polinomio");
-        System.out.println("2. Sumar Polinomio");
+        System.out.println("2. Multiplicar Polinomio");
         System.out.println("3. Derivar polinomio");
         System.out.println("4. Evaluar");
         System.out.println("5. Mostrar ");
