@@ -176,28 +176,85 @@ public class PolinomioVectorForma2 {
         return PolinomioVF2;
     }
     
-    public static double[] Multiplicar(PolinomioVectorForma2 polinomioA, PolinomioVectorForma2 polinomioB){
-        PolinomioVectorForma2 polinomioC;
-        Termino vectorT = new Termino(0, 0);
+    public static PolinomioVectorForma2 Multiplicar(PolinomioVectorForma2 polinomioA, PolinomioVectorForma2 polinomioB){
+        PolinomioVectorForma2 polinomioC= new PolinomioVectorForma2();
+        Termino objT = new Termino(polinomioA.getGrado()+polinomioB.getGrado(), 0);
         boolean bandera=true;
-        int mayor=polinomioA.getGrado()-polinomioB.getGrado(),i=0,j=0,AuxE=0,m=0;
-        Termino[] vectorTermino = new Termino[100];
+        int mayor=polinomioA.getGrado()-polinomioB.getGrado(),i=1,j=1,pos=1,AuxE=0,m=0;
+        Termino[] vectorTermino = new Termino[polinomioA.getGrado()+polinomioB.getGrado()];
         double AuxC=0;
         do{
             if(mayor>0){
                 if(j<mayor){
                     AuxC=polinomioA.getCo(j)*polinomioB.getCo(i);
                     AuxE=polinomioA.getExp(j)+polinomioB.getExp(i);
-                    vectorT=new Termino(AuxE,AuxC);
-                    vectorTermino[j]=vectorT;
-                    polinomioC= new PolinomioVectorForma2(vectorTermino);
+                    objT=new Termino(AuxE,AuxC);
+                    vectorTermino[pos]=objT;
+                    pos++;
+                    j++;
+                }else if(i<polinomioB.getGrado()){
+                    i++;
+                    j=1;
+                }
+            }else if(mayor==0){
+                if(j<mayor){
+                    AuxC=polinomioA.getCo(j)*polinomioB.getCo(j);
+                    AuxE=polinomioA.getExp(j)+polinomioB.getExp(j);
+                    objT=new Termino(AuxE,AuxC);
+                    vectorTermino[pos]=objT;
+                    pos++;
+                    j++;
+                    i++;
+                }
+            }else{
+                if(j<mayor){
+                    AuxC=polinomioA.getCo(i)*polinomioB.getCo(j);
+                    AuxE=polinomioA.getExp(i)+polinomioB.getExp(j);
+                    objT=new Termino(AuxE,AuxC);
+                    vectorTermino[pos]=objT;
+                    pos++;
+                    j++;
+                }else if(i<polinomioA.getGrado()){
+                    i++;
+                    j=1;
+                }
+                
+                if(i==mayor){
+                    bandera=false;
                 }
             }
         }while(bandera==true);
-        
+        polinomioC= new PolinomioVectorForma2(vectorTermino);
         return polinomioC;
     }
     
+     public double Evaluar(PolinomioVectorForma2 pol ,double x){
+        double valorF=0;
+        Termino[] evaluar = pol.getTerminos();
+        for(int i=1;i<=evaluar.length;i++){
+            valorF+=(evaluar[i].getC()*(Math.pow(x,evaluar[i].getE())));
+        }
+        return valorF;
+    }
+     
+    public static PolinomioVectorForma2 Derivar(PolinomioVectorForma2 polinomioD){
+        Termino obj =new Termino(polinomioD.getGrado(),0);
+        Termino[] polinomix= new Termino[polinomioD.getGrado()];
+        PolinomioVectorForma2 polinomioDErivado = new PolinomioVectorForma2();
+        int auxE=0;
+        double auxC=0.0;
+        for(int i=1;i<=polinomix.length;i++){
+            auxC=polinomix[i].getC()*polinomix[i].getE();
+            auxE=polinomix[i].getE()-1;
+            obj=new Termino(auxE, auxC);
+            polinomix[i]=obj;
+        }
+        polinomioDErivado= new PolinomioVectorForma2(polinomix);
+        
+        return polinomioD;
+    }
+
+     
     /**
      * Obtener el grado del polinomio
      *
@@ -211,6 +268,12 @@ public class PolinomioVectorForma2 {
     }
     public double getCo(int pos){
         return loquesea[pos].getC();
+    }
+    public void setExp(int ex,int pos){
+        loquesea[pos].setE(ex);
+    }
+    public void setCo(double co,int pos){
+        loquesea[pos].setC(co);
     }
 
     @Override
