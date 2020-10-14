@@ -46,7 +46,7 @@ public class PolinomioVectorForma2 {
     
     public PolinomioVectorForma2 crearVector(String p){
         p= p.toLowerCase();
-        double[]polinomioV=new double[p.length()];
+        double[]polinomioV=new double[p.length()+2];
         String coeficiente="", exponente="";
         int m=0,j=0, x=1;
         char[] cadena=new char[p.length()+1];
@@ -89,7 +89,7 @@ public class PolinomioVectorForma2 {
                     }
                     if(i==cadena.length-1){
                         exponente+="1";
-                        polinomioV[j+1]=Integer.parseInt(exponente);
+                        polinomioV[j+1]=Double.parseDouble(exponente);
                         exponente="";
                         polinomioV[j+2]=Double.parseDouble(coeficiente);
                         coeficiente="";
@@ -177,6 +177,7 @@ public class PolinomioVectorForma2 {
     }
     
     public static PolinomioVectorForma2 Multiplicar(PolinomioVectorForma2 polinomioA, PolinomioVectorForma2 polinomioB){
+        System.out.println("hola pues gonorrea");
         PolinomioVectorForma2 polinomioC= new PolinomioVectorForma2();
         Termino objT = new Termino(polinomioA.getGrado()+polinomioB.getGrado(), 0);
         boolean bandera=true;
@@ -184,8 +185,10 @@ public class PolinomioVectorForma2 {
         Termino[] vectorTermino = new Termino[polinomioA.getGrado()+polinomioB.getGrado()];
         double AuxC=0;
         do{
+            System.out.println("lololololol");
             if(mayor>0){
                 if(j<mayor){
+                    System.out.println("hola careverga1");
                     AuxC=polinomioA.getCo(j)*polinomioB.getCo(i);
                     AuxE=polinomioA.getExp(j)+polinomioB.getExp(i);
                     objT=new Termino(AuxE,AuxC);
@@ -193,11 +196,13 @@ public class PolinomioVectorForma2 {
                     pos++;
                     j++;
                 }else if(i<polinomioB.getGrado()){
+                    System.out.println("hola careverga2");
                     i++;
                     j=1;
                 }
             }else if(mayor==0){
                 if(j<mayor){
+                    System.out.println("hola careverga3");
                     AuxC=polinomioA.getCo(j)*polinomioB.getCo(j);
                     AuxE=polinomioA.getExp(j)+polinomioB.getExp(j);
                     objT=new Termino(AuxE,AuxC);
@@ -208,6 +213,7 @@ public class PolinomioVectorForma2 {
                 }
             }else{
                 if(j<mayor){
+                    System.out.println("hola careverga4");
                     AuxC=polinomioA.getCo(i)*polinomioB.getCo(j);
                     AuxE=polinomioA.getExp(i)+polinomioB.getExp(j);
                     objT=new Termino(AuxE,AuxC);
@@ -215,24 +221,27 @@ public class PolinomioVectorForma2 {
                     pos++;
                     j++;
                 }else if(i<polinomioA.getGrado()){
+                    System.out.println("hola careverga5");
                     i++;
                     j=1;
                 }
                 
-                if(i==mayor){
+                if(i==mayor-1){
+                    System.out.println("hola careverga6");
                     bandera=false;
                 }
             }
         }while(bandera==true);
+        System.out.println("hola careverga7");
+        System.out.println(polinomioC);
         polinomioC= new PolinomioVectorForma2(vectorTermino);
         return polinomioC;
     }
     
      public double Evaluar(PolinomioVectorForma2 pol ,double x){
         double valorF=0;
-        Termino[] evaluar = pol.getTerminos();
-        for(int i=1;i<=evaluar.length;i++){
-            valorF+=(evaluar[i].getC()*(Math.pow(x,evaluar[i].getE())));
+        for(int i=1;i<=pol.getGrado();i++){
+            valorF+=(pol.getCo(i)*(Math.pow(x,pol.getExp(i))));
         }
         return valorF;
     }
