@@ -67,11 +67,15 @@ public class Practica1 {
                     }
                     break;
                 case '4':
-                    if(polinomix!=null){
+                     if(polV!=null){
                         double x=0;
                         System.out.println("Ingrese el numero a evaluar de X");
                         x=leer.nextDouble();
-                        CantidadEvaluar=objt.evaluar(, );
+                        System.out.println("Ingrese el el número correspondiente al polinomio que quiere evaluar");
+                        int p=Integer.parseInt(leer.next());
+                        double cantidadEvaluar;
+                        cantidadEvaluar = obj.Evaluar(polV[p], x);
+                        System.out.println("El resultado de la evaluación es: "+cantidadEvaluar);
                     }else{
                         System.out.println("aun no ingresa los polinomios");
                     }
@@ -79,7 +83,7 @@ public class Practica1 {
                 case '5':
                     if(polV!=null){
                         for(int t=0;t<polV.length;t++){
-                            
+                            System.out.println(polV[t]);
                         }
                         
                     }else{
