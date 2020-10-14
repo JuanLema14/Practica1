@@ -1,7 +1,9 @@
 package practica1;
+import java.util.ArrayList;
 import java.util.Scanner;
 public class Practica1 {
-static Scanner leer =new Scanner(System.in);
+    static ArrayList<double[]> polinomiosA = new ArrayList<double[]>();
+    static Scanner leer =new Scanner(System.in);
     public static void main(String[] args) {
         char opc=' ';
         String Polinomio="";
@@ -16,18 +18,19 @@ static Scanner leer =new Scanner(System.in);
                 case '1':
                     System.out.println("Ingrese la cantidad de polinomios a agregar (Minimo 10)");
                     cantpol=leer.nextInt();
-                    while(i<=cantpol){
+                    while(i<cantpol){
                         System.out.println("Ingrese un polinomio(recuerde no repetir exponentes ni usar exponente 0)");
-                        Polinomio=leer.nextLine();
+                        Polinomio=leer.next();
                         polinomix=objt.crearVector(Polinomio);
-                        verificar=objt.verificarExponente(polinomix);
+                        /*if(polinomix!=null){
+                            verificar=objt.verificarExponente(polinomix);
+                        }
                         if(verificar==false){
                             System.out.println("Recuerde no ingresar exponentes repetidos");
-                        }else{
+                        }else{*/
                             i++;
-                        }
-                        double[][] polinomios=new double[cantpol][1];
-                        polinomios[cantpol][1]=polinomix[];
+                        //}
+                        polinomiosA.add(polinomix);
                     }
                     break;
                 case '2':
@@ -56,7 +59,7 @@ static Scanner leer =new Scanner(System.in);
                     break;
                 case '5':
                     if(polinomix!=null){
-                        
+                        System.out.println(polinomiosA.get(2));
                     }else{
                         System.out.println("aun no ingresa los polinomios");
                     }
