@@ -36,8 +36,25 @@ public class Practica1 {
                     }
                     break;
                 case '2':
-                    if(polinomix!=null){
-                        polinomioM=objt.Multiplicar(,);
+                     if(polV!=null){
+                        System.out.println("Ingrese el numero corrrespondiente al polinomio A: ");
+                        int aPosicion = Integer.parseInt(leer.next());
+                        System.out.println("Ingrese el numero corrrespondiente al polinomio A: ");
+                        int bPosicion =Integer.parseInt( leer.next());
+                        PolinomioVectorForma2 a = polV[aPosicion];
+                        PolinomioVectorForma2 b = polV[bPosicion];
+                        
+                        PolinomioVectorForma2 polinomioM = obj.Multiplicar(a,b);
+                        System.out.println("El Resultado de A + B :");
+                        System.out.println(polinomioM);
+                        
+                        PolinomioVectorForma2[] nuevoPolV = new PolinomioVectorForma2[polV.length+1];
+                         for(int w = 0; w<nuevoPolV.length; w++){
+                           nuevoPolV[w]=polV[w];
+                         }
+                         nuevoPolV[nuevoPolV.length] = polinomioM;
+                         polV = nuevoPolV;
+                        
                     }else{
                         System.out.println("aun no ingresa los polinomios");
                     }
