@@ -143,18 +143,44 @@ public class PolinomioVectorForma2 {
             }
         }
         polinomioV[0]=m;
-        Termino obj=new Termino(0,0);
         loquesea=new Termino[m+1];
-        for(int h=0;h<loquesea.length;h++){
-            if(h==0){
-                Termino prueba=new Termino((int)polinomioV[h],0);
-                loquesea[h]=prueba;
-            }else{
-                Termino prueba=new Termino((int)polinomioV[h],polinomioV[h+1]);
-                loquesea[h]=prueba;
-            }
-            
+        Termino prueba = new Termino(0, 0);
+        double[] polinomioNormalizado=new double[(m*2)+1];
+        for(int g=0;g<polinomioNormalizado.length;g++){
+            polinomioNormalizado[g]=polinomioV[g];
         }
+        for(int h=0;h<loquesea.length;h++){
+            for(int k=0;k<polinomioNormalizado.length;k+=2){
+                if(k==0){
+                    prueba=new Termino(0,polinomioNormalizado[k]);
+                    loquesea[k]=prueba;
+                    h++;
+                }else {
+                    prueba=new Termino((int)polinomioNormalizado[k-1],polinomioNormalizado[k]);
+                    loquesea[h]=prueba;
+                    h++;
+            }
+                
+            }
+        }
+        //Termino prueba = new Termino(0, 0);
+        //int CeldaL=1;
+        //loquesea[0]=prueba;
+        /*for(int h=0;h<=loquesea.length;h+=2){
+            
+            
+            if(h==0){
+                prueba=new Termino(0,polinomioV[h]);
+                loquesea[h]=prueba;
+            }else if(h/2==0){
+                Termino prueba=new Termino((int)polinomioV[h+1],polinomioV[h+2]);
+                loquesea[h+1]=prueba;
+            }*/
+            /*prueba=new Termino((int)polinomioV[h+1],polinomioV[h+2]);
+            loquesea[CeldaL]=prueba;
+            CeldaL++;*/
+            
+        //}
         
         PolinomioVF2= new PolinomioVectorForma2(loquesea);
         System.out.println(PolinomioVF2);
