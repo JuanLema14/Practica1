@@ -25,7 +25,7 @@ public class Practica1 {
                         polinomio=leer.next();
                         pol=obj.crearVector(polinomio);
                         /*if(polinomix!=null){
-                            verificar=objt.verificarExponente(polinomix);
+                            verificar=objt.verificarExponente(pol);
                         }
                         if(verificar==false){
                             System.out.println("Recuerde no ingresar exponentes repetidos");
@@ -62,7 +62,7 @@ public class Practica1 {
                 case '5':
                     if(polV!=null){
                         for(int t=0;t<polV.length;t++){
-                            System.out.println(polV[t].toString());
+                            
                         }
                         
                     }else{
