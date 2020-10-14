@@ -125,22 +125,26 @@ public class PolinomioVectorForma2 {
                     j+=2;
                     m+=1;
                 }else{
-                    do{
-                        coeficiente+=Character.toString(cadena[i]);
-                        if(i==cadena.length){
-                           break;
-                       }else{
+                    if(!"0".equals(Character.toString(cadena[i]))){
+                        do{
+                            coeficiente+=Character.toString(cadena[i]);
+                            if(i==cadena.length){
+                            break;
+                        }else{
                            i++;
                        }
-                    }while(i<cadena.length && Character.isDigit(cadena[i]));
-                    i=i-1;
-                    if(i==cadena.length-1 || cadena[i+1]=='-' || cadena[i+1]=='+'){
-                        polinomioV[j+1]=0.0;
-                        exponente="";
-                        polinomioV[j+2]=Double.parseDouble(coeficiente);
-                        coeficiente="";
-                        j+=2;
-                        m+=1;
+                        }while(i<cadena.length && Character.isDigit(cadena[i]));
+                        i=i-1;
+                        if(i==cadena.length-1 || cadena[i+1]=='-' || cadena[i+1]=='+'){
+                            polinomioV[j+1]=0.0;
+                            exponente="";
+                            polinomioV[j+2]=Double.parseDouble(coeficiente);
+                            coeficiente="";
+                            j+=2;
+                            m+=1;
+                        }
+                    }else if(Character.toString(cadena[i])=="0" && ((i==cadena.length-1) || !Character.isDigit(cadena[i+1]))){
+                        i++;
                     }
                 }
             }
@@ -174,12 +178,19 @@ public class PolinomioVectorForma2 {
     
     public static double[] Multiplicar(PolinomioVectorForma2 polinomioA, PolinomioVectorForma2 polinomioB){
         PolinomioVectorForma2 polinomioC;
+        Termino vectorT = new Termino(0, 0);
         boolean bandera=true;
-        int mayor=polinomioA.getGrado()-polinomioB.getGrado(),i=0,j=0,Aux=;
+        int mayor=polinomioA.getGrado()-polinomioB.getGrado(),i=0,j=0,AuxE=0,m=0;
+        Termino[] vectorTermino = new Termino[100];
+        double AuxC=0;
         do{
             if(mayor>0){
                 if(j<mayor){
-                    polinomioA.g
+                    AuxC=polinomioA.getCo(j)*polinomioB.getCo(i);
+                    AuxE=polinomioA.getExp(j)+polinomioB.getExp(i);
+                    vectorT=new Termino(AuxE,AuxC);
+                    vectorTermino[j]=vectorT;
+                    polinomioC= new PolinomioVectorForma2(vectorTermino);
                 }
             }
         }while(bandera==true);
