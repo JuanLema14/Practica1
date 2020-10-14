@@ -2,10 +2,11 @@ package practica1;
 
 public class Termino {
 
-    // Variable para almacenar el exponente
     private int e;
-    // Variable para almacenar el coeficiente
     private double c;
+
+    public Termino() {
+    }
 
     public Termino(int e, double c) {
         this.e = e;
