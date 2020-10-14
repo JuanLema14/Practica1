@@ -1,16 +1,17 @@
 package practica1;
-import java.util.ArrayList;
+
 import java.util.Scanner;
 public class Practica1 {
-    static ArrayList<double[]> polinomiosA = new ArrayList<double[]>();
+    
+    static PolinomioVectorForma2 pol;
+    static PolinomioVectorForma2[] polV=new PolinomioVectorForma2[20];
     static Scanner leer =new Scanner(System.in);
+    
     public static void main(String[] args) {
         char opc=' ';
-        String Polinomio="";
         int CantidadEvaluar=0,cantpol=0,i=0;
+        PolinomioVectorForma2 obj =new PolinomioVectorForma2();
         boolean verificar=true;
-        double[] polinomix=null, polinomioD=null,polinomioM=null;
-        PolinomioVectortipo2 objt=new PolinomioVectortipo2();
         
         do{
             opc=menu();
@@ -19,9 +20,10 @@ public class Practica1 {
                     System.out.println("Ingrese la cantidad de polinomios a agregar (Minimo 10)");
                     cantpol=leer.nextInt();
                     while(i<cantpol){
+                        String polinomio="";
                         System.out.println("Ingrese un polinomio(recuerde no repetir exponentes ni usar exponente 0)");
-                        Polinomio=leer.next();
-                        polinomix=objt.crearVector(Polinomio);
+                        polinomio=leer.next();
+                        pol=obj.crearVector(polinomio);
                         /*if(polinomix!=null){
                             verificar=objt.verificarExponente(polinomix);
                         }
@@ -30,7 +32,7 @@ public class Practica1 {
                         }else{*/
                             i++;
                         //}
-                        polinomiosA.add(polinomix);
+                        polV[i]=pol;    
                     }
                     break;
                 case '2':
@@ -58,8 +60,11 @@ public class Practica1 {
                     }
                     break;
                 case '5':
-                    if(polinomix!=null){
-                        System.out.println(polinomiosA.get(2));
+                    if(polV!=null){
+                        for(int t=0;t<polV.length;t++){
+                            System.out.println(polV[t].toString());
+                        }
+                        
                     }else{
                         System.out.println("aun no ingresa los polinomios");
                     }
