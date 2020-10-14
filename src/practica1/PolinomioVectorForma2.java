@@ -155,7 +155,7 @@ public class PolinomioVectorForma2 {
         for(int h=0;h<loquesea.length;h++){
             for(int k=0;k<polinomioNormalizado.length;k+=2){
                 if(k==0){
-                    prueba=new Termino(0,polinomioNormalizado[k]);
+                    prueba=new Termino((int)polinomioNormalizado[k],0);
                     loquesea[k]=prueba;
                     h++;
                 }else {
@@ -166,30 +166,27 @@ public class PolinomioVectorForma2 {
                 
             }
         }
-        //Termino prueba = new Termino(0, 0);
-        //int CeldaL=1;
-        //loquesea[0]=prueba;
-        /*for(int h=0;h<=loquesea.length;h+=2){
-            
-            
-            if(h==0){
-                prueba=new Termino(0,polinomioV[h]);
-                loquesea[h]=prueba;
-            }else if(h/2==0){
-                Termino prueba=new Termino((int)polinomioV[h+1],polinomioV[h+2]);
-                loquesea[h+1]=prueba;
-            }*/
-            /*prueba=new Termino((int)polinomioV[h+1],polinomioV[h+2]);
-            loquesea[CeldaL]=prueba;
-            CeldaL++;*/
-            
-        //}
         
         PolinomioVF2= new PolinomioVectorForma2(loquesea);
         System.out.println(PolinomioVF2);
         return PolinomioVF2;
     }
-
+    
+    public static double[] Multiplicar(PolinomioVectorForma2 polinomioA, PolinomioVectorForma2 polinomioB){
+        PolinomioVectorForma2 polinomioC;
+        boolean bandera=true;
+        int mayor=polinomioA.getGrado()-polinomioB.getGrado(),i=0,j=0,Aux=;
+        do{
+            if(mayor>0){
+                if(j<mayor){
+                    polinomioA.g
+                }
+            }
+        }while(bandera==true);
+        
+        return polinomioC;
+    }
+    
     /**
      * Obtener el grado del polinomio
      *
@@ -197,6 +194,12 @@ public class PolinomioVectorForma2 {
      */
     public int getGrado() {
         return loquesea[0].getE();
+    }
+    public int getExp(int pos){
+        return loquesea[pos].getE();
+    }
+    public double getCo(int pos){
+        return loquesea[pos].getC();
     }
 
     @Override
@@ -206,9 +209,9 @@ public class PolinomioVectorForma2 {
         if (loquesea == null) {
             return "0";
         }
-        for (Termino ti : loquesea) {
-            double j = ti.getC();
-            int i = ti.getE();
+        for (int t=1;t<loquesea.length;t++) {
+            double j = loquesea[t].getC();
+            int i = loquesea[t].getE();
             // Para adicionar el simbolo del coeficiente para numeros positivos, excluyendo el simbolo + del primer termino si es positivo.
             if (j >= 0) {
                 polinomio.append("+");
