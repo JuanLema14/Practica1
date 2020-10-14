@@ -136,7 +136,7 @@ public class PolinomioVectorForma2 {
                         }while(i<cadena.length && Character.isDigit(cadena[i]));
                         i=i-1;
                         if(i==cadena.length-1 || cadena[i+1]=='-' || cadena[i+1]=='+'){
-                            polinomioV[j+1]=0.0;
+                            polinomioV[j+1]=0;
                             exponente="";
                             polinomioV[j+2]=Double.parseDouble(coeficiente);
                             coeficiente="";
