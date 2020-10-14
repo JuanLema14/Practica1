@@ -21,7 +21,7 @@ public class Practica1 {
                     cantpol=leer.nextInt();
                     while(i<cantpol){
                         String polinomio="";
-                        System.out.println("Ingrese un polinomio(recuerde no repetir exponentes ni usar exponente 0)");
+                        System.out.println("Ingrese un polinomio(recuerde no repetir exponentes)");
                         polinomio=leer.next();
                         pol=obj.crearVector(polinomio);
                         /*if(polinomix!=null){
@@ -44,7 +44,8 @@ public class Practica1 {
                         PolinomioVectorForma2 a = polV[aPosicion];
                         PolinomioVectorForma2 b = polV[bPosicion];
                         
-                        PolinomioVectorForma2 polinomioM = obj.Multiplicar(a,b);
+                        PolinomioVectorForma2 polinomioM = new PolinomioVectorForma2();
+                        polinomioM=obj.Multiplicar(a,b);
                         System.out.println("El Resultado de A + B :");
                         System.out.println(polinomioM);
                         
@@ -81,14 +82,36 @@ public class Practica1 {
                     }
                     break;
                 case '5':
-                    if(polV!=null){
-                        for(int t=0;t<polV.length;t++){
-                            System.out.println(polV[t]);
-                        }
+                    System.out.println("1. Imprimir un polinomio especifico cual? (adjunte posicion del polinomio)");
+                    System.out.println("2. Imprimir todos");
+                    int opcion=leer.nextInt();
+                    
+                    if(opcion==1){
+                        System.out.println("Adjunte la posicion del polinomio");
+                        int pos=leer.nextInt();
                         
+                        System.out.println("El polinomio elegido es:");
+                        if(polV!=null){
+                            System.out.println(polV[pos]);
+                        }else{
+                            System.out.println("aun no ingresa los polinomios");
+                        }
+
+                    }else if(opcion==2){
+                        if(polV!=null){
+                            int t=0;
+                            while(t<polV.length && polV[t]!=null){
+                                System.out.println((t+1)+". "+polV[t]);
+                                t++;
+                            }
+                        
+                        }else{
+                            System.out.println("aun no ingresa los polinomios");
+                        }
                     }else{
-                        System.out.println("aun no ingresa los polinomios");
+                        System.out.println("Opcion Incorrecta");
                     }
+                    
                     break;
                 case '6':
                     break;
