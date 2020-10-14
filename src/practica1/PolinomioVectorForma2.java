@@ -81,9 +81,12 @@ public class PolinomioVectorForma2 {
                    }else{
                        coeficiente="-";   
                    }
-                }else if(cadena[i]=='x' && !(Character.isDigit(cadena[i-1]))){
-                    coeficiente+="1";
+                /*}else if(cadena[i]=='x' && !(Character.isDigit(cadena[i-1]))){
+                    coeficiente+="1";*/
                 }else if(i<cadena.length && cadena[i]=='x'){
+                    if(cadena[i]=='x' && !(Character.isDigit(cadena[i-1]))){
+                        coeficiente+="1";
+                    }
                     if(i==cadena.length-1){
                         exponente+="1";
                         polinomioV[j+1]=Integer.parseInt(exponente);
@@ -101,7 +104,7 @@ public class PolinomioVectorForma2 {
                         j+=2;
                         m+=1;
                     }
-                }
+                }    
             }else if(Character.isDigit(cadena[i])){
                 if(cadena[i-1]=='^'){
                     
