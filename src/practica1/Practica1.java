@@ -73,7 +73,7 @@ public class Practica1 {
                         System.out.println("Ingrese el numero a evaluar de X");
                         x=leer.nextDouble();
                         System.out.println("Ingrese el el número correspondiente al polinomio que quiere evaluar");
-                        int p=Integer.parseInt(leer.next());
+                        int p=leer.nextInt();
                         double cantidadEvaluar;
                         cantidadEvaluar = obj.Evaluar(polV[p], x);
                         System.out.println("El resultado de la evaluación es: "+cantidadEvaluar);
