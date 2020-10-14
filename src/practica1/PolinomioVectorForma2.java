@@ -29,19 +29,19 @@ package practica1;
  */
 public class PolinomioVectorForma2 {
 
-    private final Termino[] terminos;
+    private Termino[] loquesea;
 
     /**
      * Constructor para el polinomio
      *
-     * @param terminos arreglo de terminos del polinomios
+     * @param loquesea arreglo de terminos del polinomios
      */
-    public PolinomioVectorForma2(Termino[] terminos) {
-        this.terminos = terminos;
+    public PolinomioVectorForma2(Termino[] loquesea) {
+        this.loquesea = loquesea;
     }
 
     public PolinomioVectorForma2() {
-        terminos = null;
+        loquesea = null;
     }
     
     public PolinomioVectorForma2 crearVector(String p){
@@ -144,7 +144,7 @@ public class PolinomioVectorForma2 {
         }
         polinomioV[0]=m;
         Termino obj=new Termino(0,0);
-        Termino[] loquesea=new Termino[m+1];
+        loquesea=new Termino[m+1];
         for(int h=0;h<loquesea.length;h++){
             if(h==0){
                 Termino prueba=new Termino((int)polinomioV[h],0);
@@ -155,19 +155,9 @@ public class PolinomioVectorForma2 {
             }
             
         }
-        /*for(int l=0;l<(20)+1;l+=1){
-            if(l==0){
-                loquesea[l].setE((int)(polinomioV[l]));
-            }else{
-                loquesea[l].setE((int)polinomioV[l]);
-                loquesea[l].setC(polinomioV[l+1]);
-                l++;
-            }
-        }*/
+        
         PolinomioVF2= new PolinomioVectorForma2(loquesea);
-        for(int l=0;l<loquesea.length;l++){
-            
-        }
+        System.out.println(PolinomioVF2);
         return PolinomioVF2;
     }
 
@@ -177,17 +167,17 @@ public class PolinomioVectorForma2 {
      * @return grado del polinomio
      */
     public int getGrado() {
-        return terminos[0].getE();
+        return loquesea[0].getE();
     }
 
     @Override
     public String toString() {
         StringBuilder polinomio = new StringBuilder();
         boolean primerTermino = true;
-        if (terminos == null) {
+        if (loquesea == null) {
             return "0";
         }
-        for (Termino ti : terminos) {
+        for (Termino ti : loquesea) {
             double j = ti.getC();
             int i = ti.getE();
             // Para adicionar el simbolo del coeficiente para numeros positivos, excluyendo el simbolo + del primer termino si es positivo.
@@ -206,7 +196,7 @@ public class PolinomioVectorForma2 {
      * @return
      */
     public Termino[] getTerminos() {
-        return terminos;
+        return loquesea;
     }
 
     /**
@@ -215,7 +205,7 @@ public class PolinomioVectorForma2 {
      * @return
      */
     public int getDiferentesCero() {
-        return this.terminos.length;
+        return this.loquesea.length;
     }
 
     /**
@@ -226,7 +216,7 @@ public class PolinomioVectorForma2 {
      */
     public double getCoeficiente(int exponente) {
         double coeficiente = 0;
-        for (Termino t : terminos) {
+        for (Termino t : loquesea) {
             if (t.getE() == exponente) {
                 return t.getC();
             }
