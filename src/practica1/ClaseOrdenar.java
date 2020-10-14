@@ -4,11 +4,11 @@ public class ClaseOrdenar {
     
         
     
-public static boolean verificarExponente(double[] polinomioEx){
+public static boolean verificarExponente(PolinomioVectorForma2 polinomioEx){
         boolean v=true, bandera=true;
-        int i=1,j=3;
+
         do{
-            if(polinomioEx[i]==polinomioEx[j]){
+            if(polinomioEx){
                 bandera=v=false;
             }else{
                 if(j<=polinomioEx.length-1){
