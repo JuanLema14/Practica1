@@ -177,62 +177,44 @@ public class PolinomioVectorForma2 {
     }
     
     public static PolinomioVectorForma2 Multiplicar(PolinomioVectorForma2 polinomioA, PolinomioVectorForma2 polinomioB){
-        System.out.println("hola pues gonorrea");
         PolinomioVectorForma2 polinomioC= new PolinomioVectorForma2();
         Termino objT = new Termino(polinomioA.getGrado()+polinomioB.getGrado(), 0);
-        boolean bandera=true;
-        int mayor=polinomioA.getGrado()-polinomioB.getGrado(),i=1,j=1,pos=1,AuxE=0,m=0;
-        Termino[] vectorTermino = new Termino[polinomioA.getGrado()+polinomioB.getGrado()];
+        int mayor=polinomioA.getGrado()-polinomioB.getGrado(),i=1,pos=1,AuxE=0,m=0;
+        Termino[] vectorTermino = new Termino[((polinomioA.getGrado()+polinomioB.getGrado())*2)+1];
         double AuxC=0;
-        do{
-            System.out.println("lololololol");
+        //vectorTermino[0]=objT;
+        for(int j=1;i<polinomioB.getGrado() || i<polinomioA.getGrado();j++){
             if(mayor>0){
-                if(j<mayor){
-                    System.out.println("hola careverga1");
+                if(j<polinomioA.getGrado()){
                     AuxC=polinomioA.getCo(j)*polinomioB.getCo(i);
                     AuxE=polinomioA.getExp(j)+polinomioB.getExp(i);
                     objT=new Termino(AuxE,AuxC);
                     vectorTermino[pos]=objT;
-                    pos++;
-                    j++;
-                }else if(i<polinomioB.getGrado()){
-                    System.out.println("hola careverga2");
+                }else if(j==polinomioA.getGrado()){
                     i++;
                     j=1;
                 }
             }else if(mayor==0){
-                if(j<mayor){
-                    System.out.println("hola careverga3");
-                    AuxC=polinomioA.getCo(j)*polinomioB.getCo(j);
-                    AuxE=polinomioA.getExp(j)+polinomioB.getExp(j);
-                    objT=new Termino(AuxE,AuxC);
-                    vectorTermino[pos]=objT;
-                    pos++;
-                    j++;
-                    i++;
-                }
+                AuxC=polinomioA.getCo(j)*polinomioB.getCo(j);
+                AuxE=polinomioA.getExp(j)+polinomioB.getExp(j);
+                objT=new Termino(AuxE,AuxC);
+                vectorTermino[pos]=objT;
+                System.out.println(objT.getC()+objT.getE());
+                i++;
             }else{
-                if(j<mayor){
-                    System.out.println("hola careverga4");
+                if(j<polinomioB.getGrado()){
                     AuxC=polinomioA.getCo(i)*polinomioB.getCo(j);
                     AuxE=polinomioA.getExp(i)+polinomioB.getExp(j);
                     objT=new Termino(AuxE,AuxC);
                     vectorTermino[pos]=objT;
-                    pos++;
-                    j++;
-                }else if(i<polinomioA.getGrado()){
-                    System.out.println("hola careverga5");
+                    
+                }else if(j==polinomioB.getGrado()){
                     i++;
                     j=1;
                 }
-                
-                if(i==mayor-1){
-                    System.out.println("hola careverga6");
-                    bandera=false;
-                }
             }
-        }while(bandera==true);
-        System.out.println("hola careverga7");
+            pos++;
+        }
         System.out.println(polinomioC);
         polinomioC= new PolinomioVectorForma2(vectorTermino);
         return polinomioC;
@@ -249,7 +231,7 @@ public class PolinomioVectorForma2 {
     public static PolinomioVectorForma2 Derivar(PolinomioVectorForma2 polinomioD){
         Termino obj =new Termino(polinomioD.getGrado(),0);
         Termino[] polinomix= new Termino[polinomioD.getGrado()];
-        PolinomioVectorForma2 polinomioDErivado = new PolinomioVectorForma2();
+        PolinomioVectorForma2 polinomioDerivado = new PolinomioVectorForma2();
         int auxE=0;
         double auxC=0.0;
         for(int i=1;i<=polinomix.length;i++){
@@ -258,7 +240,7 @@ public class PolinomioVectorForma2 {
             obj=new Termino(auxE, auxC);
             polinomix[i]=obj;
         }
-        polinomioDErivado= new PolinomioVectorForma2(polinomix);
+        polinomioDerivado= new PolinomioVectorForma2(polinomix);
         
         return polinomioD;
     }
