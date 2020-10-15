@@ -230,19 +230,21 @@ public class PolinomioVectorForma2 {
      
     public static PolinomioVectorForma2 Derivar(PolinomioVectorForma2 polinomioD){
         Termino obj =new Termino(polinomioD.getGrado(),0);
-        Termino[] polinomix= new Termino[polinomioD.getGrado()];
+        Termino[] polinomix= new Termino[polinomioD.getGrado()+1];
         PolinomioVectorForma2 polinomioDerivado = new PolinomioVectorForma2();
         int auxE=0;
         double auxC=0.0;
-        for(int i=1;i<=polinomix.length;i++){
-            auxC=polinomix[i].getC()*polinomix[i].getE();
-            auxE=polinomix[i].getE()-1;
-            obj=new Termino(auxE, auxC);
+        for(int i=1;i<polinomix.length;i++){
+            auxC=(polinomioD.getCo(i))*(polinomioD.getExp(i));
+            auxE=polinomioD.getExp(i)-1;
+            System.out.println(auxC);
+            System.out.println(auxE);
+            obj = new Termino(auxE, auxC);
             polinomix[i]=obj;
         }
         polinomioDerivado= new PolinomioVectorForma2(polinomix);
         
-        return polinomioD;
+        return polinomioDerivado;
     }
 
      
