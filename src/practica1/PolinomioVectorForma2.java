@@ -237,8 +237,6 @@ public class PolinomioVectorForma2 {
         for(int i=1;i<polinomix.length;i++){
             auxC=(polinomioD.getCo(i))*(polinomioD.getExp(i));
             auxE=polinomioD.getExp(i)-1;
-            System.out.println(auxC);
-            System.out.println(auxE);
             obj = new Termino(auxE, auxC);
             polinomix[i]=obj;
         }
