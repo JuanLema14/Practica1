@@ -178,188 +178,101 @@ public class PolinomioVectorForma2 {
         return PolinomioVF2;
     }
     
-    /*public static PolinomioVectorForma2 Multiplicar(PolinomioVectorForma2 polinomioA, PolinomioVectorForma2 polinomioB){
+    public static PolinomioVectorForma2 Multiplicar(PolinomioVectorForma2 polinomioA, PolinomioVectorForma2 polinomioB){
         PolinomioVectorForma2 polinomioC= new PolinomioVectorForma2();
-        Termino objT = new Termino(polinomioA.getGrado()+polinomioB.getGrado(), 0);
-        int mayor=polinomioA.getGrado()-polinomioB.getGrado(),i=1,pos=0,AuxE=0,m=0;
-        Termino[] vectorTermino = new Termino[(polinomioA.getGrado()+polinomioB.getGrado())+2];
+        PolinomioVectorForma2 polinomioL= new PolinomioVectorForma2();
+        Termino Termino2 = new Termino(0, 0);
+        Termino[] polA=polinomioA.getTerminos();
+        Termino[] polB=polinomioB.getTerminos();
+        Termino[] polLlenar= new Termino[(polinomioA.getGrado()*polinomioB.getGrado())+2];
+        int mayor=0,j=1,i=1,pos=0,AuxE=0,recorrido1=polA.length,recorrido2=polB.length;
         double AuxC=0;
-        vectorTermino[0]=objT;
-        for(int j=1;i<polinomioB.getGrado()+1 || i<polinomioA.getGrado()+1;j++){
-            pos++;
-            if(mayor>0){
-                if(j<polinomioA.getGrado()+1){
-                    AuxC=polinomioA.getCo(j)*polinomioB.getCo(i);
-                    AuxE=polinomioA.getExp(j)+polinomioB.getExp(i);
-                    objT=new Termino(AuxE,AuxC);
-                    vectorTermino[pos]=objT;
-                }else if(j==polinomioA.getGrado()+1){
-                    j=0;
-                    i++;
+        mayor=recorrido1-recorrido2;
+        Termino2 =new Termino((polinomioA.getGrado()*polinomioB.getGrado())+2, 0);
+        polLlenar[0]=Termino2;
+        if(mayor>0){
+            while(i<recorrido1){
+                while(j<recorrido2){
+                    AuxC=polA[j].getC()*polB[i].getC();
+                    AuxE=polA[j].getE()+polB[i].getE();
+                    Termino2=new Termino(AuxE, AuxC);
+                    polLlenar[pos]=Termino2;
+                    j++;
                 }
-            }else if(mayor==0){
-                if(j<polinomioB.getGrado()+1){
-                    AuxC=polinomioA.getCo(i)*polinomioB.getCo(j);
-                    AuxE=polinomioA.getExp(i)+polinomioB.getExp(j);
-                    System.out.println(AuxC);
-                    System.out.println(AuxE);
-                    objT=new Termino(AuxE,AuxC);
-                    vectorTermino[pos]=objT;
-                }else if(j==polinomioB.getGrado()+1){
-                    j=0;
-                    i++;   
+                polinomioL=new PolinomioVectorForma2(polLlenar);
+                polinomioC=polinomioC.Sumar(polinomioL);
+                pos=0;
+                i++;
+                j=1;
+            }
+            polinomioC = new PolinomioVectorForma2(polLlenar);
+        }else if(mayor==0){//2x^2+3x+6
+            while(i<recorrido1){
+                while(j<recorrido2){
+                    AuxC=polA[j].getC()*polB[i].getC();
+                    AuxE=polA[j].getE()+polB[i].getE();
+                    Termino2=new Termino(AuxE, AuxC);
+                    polLlenar[pos]=Termino2;
+                    j++;
                 }
-            }else{
-                if(j<polinomioB.getGrado()+1){
-                    AuxC=polinomioA.getCo(i)*polinomioB.getCo(j);
-                    AuxE=polinomioA.getExp(i)+polinomioB.getExp(j);
-                    objT=new Termino(AuxE,AuxC);
-                    vectorTermino[pos]=objT;
-                }else if(j==polinomioB.getGrado()+1){
-                    j=0;
-                    i++;
+                polinomioL=new PolinomioVectorForma2(polLlenar);
+                polinomioC=polinomioC.Sumar(polinomioL);
+                pos=0;
+                i++;
+                j=1;
+            }
+            polinomioC = new PolinomioVectorForma2(polLlenar);
+        }else{
+            while(i<recorrido2){
+                while(j<recorrido1){
+                    AuxC=polA[i].getC()*polB[j].getC();
+                    AuxE=polA[i].getE()+polB[j].getE();
+                    Termino2=new Termino(AuxE, AuxC);
+                    polLlenar[pos]=Termino2;
+                    j++;
                 }
+                polinomioL=new PolinomioVectorForma2(polLlenar);
+                polinomioC=polinomioC.Sumar(polinomioL);
+                pos=0;
+                i++;
+                j=1;;
             }
         }
-        polinomioC= new PolinomioVectorForma2(vectorTermino);
-        return polinomioC;
-    }*/
-    public PolinomioVectorForma2 Multiplicar(PolinomioVectorForma2 polinomioB,PolinomioVectorForma2 polinomioA){
-        PolinomioVectorForma2 polinomioC=new PolinomioVectorForma2();
-        Termino[] terminosPolB = polinomioB.getTerminos();
-        Termino[] terminosPolA = polinomioB.getTerminos();
-        int TamB =  terminosPolB.length,TamA =  terminosPolA.length,i = 0,j=0,t=0;
-
-         while(t< TamA){
-            double coeA= terminosPolA[t].getC();
-            int expA=terminosPolA[t].getE();
-            Termino[] terminosPolD=new Termino[TamB];
-            while(j< TamB){
-                double coeB= terminosPolB[j].getC();
-                int expB=terminosPolB[j].getE();
-
-                double AuxC=coeA * coeB;
-                int AuxE=expB+expA;
-                Termino nuevoTermino=new Termino(AuxE,AuxC);
-                terminosPolD[i]=nuevoTermino;
-                i++;
-                j++;
-            }
-
-            PolinomioVectorForma2 polinomioD=new PolinomioVectorForma2(terminosPolD);
-            polinomioC = polinomioC.sumar(polinomioD);
-            terminosPolD = null;
-            i = 0;
-            j = 0;
-            t++; 
-
-            }
+        
         return polinomioC;
     }
-        
-    public PolinomioVectorForma2 sumar(PolinomioVectorForma2 polinomioB){
-        PolinomioVectorForma2 polC = new PolinomioVectorForma2();
-        
-        if(this.getTerminos()== null){
-            Termino[] terminosPolB = polinomioB.getTerminos();
-            int cantidadTerminosPolB = terminosPolB.length;
-            Termino[] terminosPolC = new Termino[cantidadTerminosPolB];
-            int indicePolC = 0;
-            int indRecorridoB = 0;
-            while (indRecorridoB < cantidadTerminosPolB){
-                int expB = terminosPolB[indRecorridoB].getE();
-                double coeB = terminosPolB[indRecorridoB].getC();
-                terminosPolC[indicePolC] = new Termino(expB,coeB );
-                indRecorridoB++;
-                indicePolC++;
-            }
-            polC = new PolinomioVectorForma2(terminosPolC);
-
-            
-        }else if(polinomioB.getTerminos()==null){
-            Termino[] terminosPolA = this.getTerminos();
-            int cantidadTerminosPolA = terminosPolA.length;
-            Termino[] terminosPolC = new Termino[cantidadTerminosPolA];
-            int indicePolC = 0;
-            int indRecorridoA = 0;
-            while (indRecorridoA < cantidadTerminosPolA){
-                int expA = terminosPolA[indRecorridoA].getE();
-                double coeA = terminosPolA[indRecorridoA].getC();
-                terminosPolC[indicePolC] = new Termino(expA,coeA );
-                indRecorridoA++;
-                indicePolC++;
-            }
-            polC = new PolinomioVectorForma2(terminosPolC);
-            
-        }else{
-            
-            Termino[] terminosPolB = polinomioB.getTerminos();
-            Termino[] terminosPolA = loquesea;
-            
-            
-            int cantidadTerminosPolB =  terminosPolB.length;
-            int cantidadTerminosPolA =  terminosPolA.length;
-
-            Termino[] terminosPolC = new Termino[cantidadTerminosPolB + cantidadTerminosPolA];
-             
-            int indRecorridoB = 0;
-            int indicePolC = 0;
-            int indRecorridoA = 0;
-            
-
-            while (indRecorridoA < cantidadTerminosPolA && indRecorridoB < cantidadTerminosPolB){
-                int expA = terminosPolA[indRecorridoA].getE();
-                double coeA = terminosPolA[indRecorridoA].getC() ;
-                int expB = terminosPolB[indRecorridoB].getE();
-                double coeB = terminosPolB[indRecorridoB].getC();
-
-                if(expA > expB){
-                    terminosPolC[indicePolC] = new Termino(expA,coeA);
-                    indRecorridoA++;
-                    indicePolC++;
-                }else if (expA == expB){
-                    double posibleCoeficienteC = coeA+coeB;
-                    if(posibleCoeficienteC != 0){
-                        terminosPolC[indicePolC] =new Termino(expA,posibleCoeficienteC);
-                        indicePolC++;
+    
+    public PolinomioVectorForma2 Sumar(PolinomioVectorForma2 S){
+        PolinomioVectorForma2 pAux = new PolinomioVectorForma2();
+        int m=0;
+        for(int i=1;i<S.getGrado()+1;i++){
+            for(int j=1;j<S.getGrado()+1;j++){
+                for(int t=1;t<pAux.getGrado()+1;t++){
+                    if(S.getExp(i)==pAux.getExp(t)){
+                        
                     }
-                    indRecorridoA++;
-                    indRecorridoB++;
-                }else {
-                    terminosPolC[indicePolC]= new Termino(expB,coeB);
-                    indRecorridoB++;
-                    indicePolC++;
                 }
-            }
-            while (indRecorridoA<cantidadTerminosPolA) {
-                int expA = terminosPolA[indRecorridoA].getE();
-                double canA = terminosPolA[indRecorridoA].getC();
-                terminosPolC[indicePolC] =new Termino(expA,canA);
-                indRecorridoA++;
-                indicePolC++;
-            }
-
-            while (indRecorridoB < cantidadTerminosPolB){
-                int expB = terminosPolB[indRecorridoB].getE();
-                double coeB = terminosPolB[indRecorridoB].getC();
-                terminosPolC[indicePolC] = new Termino(expB,coeB);
-                indRecorridoB++;
-                indicePolC++;
-            }
-            
-            if (indicePolC == 0){
-                polC = new PolinomioVectorForma2(null);
-                return polC;
-            }else{
-                if (indicePolC < terminosPolC.length){
-                    Termino[] terminosCTemporal = new Termino [indicePolC];
-                    System.arraycopy(terminosPolC, 0, terminosCTemporal, 0,indicePolC);
-                    polC = new PolinomioVectorForma2(terminosCTemporal);
-                    return polC;
+                if(i!=j){
+                    if(S.getExp(i)==S.getExp(j)){
+                        pAux.setCo(S.getCo(j)+pAux.getCo(i),i);
+                        pAux.setExp(S.getExp(i),i);
+                        m++;
+                        i++;
+                        j++;
+                    }else{
+                        pAux.setCo(S.getCo(i),i);
+                        pAux.setExp(S.getExp(i),i);
+                        m++;
+                    }
+                }else{
+                    pAux.setCo(S.getCo(i),i);
+                    pAux.setExp(S.getExp(i),i);
+                    m++;
                 }
             }
         }
-        return polC;    
+        
+        return pAux;
     }
     
      public double Evaluar(PolinomioVectorForma2 pol ,double x){
