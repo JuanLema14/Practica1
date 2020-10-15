@@ -1,6 +1,8 @@
 package practica1;
 
+import java.awt.HeadlessException;
 import java.util.Scanner;
+import java.util.concurrent.ExecutionException;
 public class Practica1 {
     
     static PolinomioVectorForma2 pol;
@@ -17,8 +19,15 @@ public class Practica1 {
             opc=menu();
             switch(opc){
                 case '1':
-                    System.out.println("Ingrese la cantidad de polinomios a agregar (Minimo 10)");
-                    cantpol=leer.nextInt();
+                    try{
+                                          System.out.println("Ingrese la cantidad de polinomios a agregar (Minimo 10)");
+                    cantpol=leer.nextInt();  
+                    }catch(Exception e){
+                        System.out.println("---------------------------------");
+                        System.out.println("----------Valor erroneo----------");
+                        System.out.println("---------------------------------");
+                    }
+
                     if(cantpol>=10){
                         while(i<cantpol){
                             String polinomio="";
@@ -52,7 +61,7 @@ public class Practica1 {
                         PolinomioVectorForma2 polinomioM = new PolinomioVectorForma2();
                         polinomioM=obj.Multiplicar(a,b);
                         System.out.println("El Resultado de A + B :");
-                        //System.out.println(polinomioM);
+                        System.out.println(polinomioM);
                         
                         /*PolinomioVectorForma2[] nuevoPolV = new PolinomioVectorForma2[polV.length+1];
                          for(int w = 0; w<nuevoPolV.length; w++){
