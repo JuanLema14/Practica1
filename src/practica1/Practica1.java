@@ -24,6 +24,7 @@ public class Practica1 {
                         System.out.println("Ingrese un polinomio(recuerde no repetir exponentes)");
                         polinomio=leer.next();
                         pol=obj.crearVector(polinomio);
+                        polV[i]=pol;
                         /*if(polinomix!=null){
                             verificar=objt.verificarExponente(pol);
                         }
@@ -32,7 +33,7 @@ public class Practica1 {
                         }else{*/
                             i++;
                         //}
-                        polV[i]=pol;    
+                            
                     }
                     break;
                 case '2':
@@ -98,7 +99,7 @@ public class Practica1 {
                         
                         System.out.println("El polinomio elegido es:");
                         if(polV!=null){
-                            System.out.println(polV[pos]);
+                            System.out.println(polV[pos-1]);
                         }else{
                             System.out.println("aun no ingresa los polinomios");
                         }
@@ -106,7 +107,7 @@ public class Practica1 {
                     }else if(opcion==2){
                         if(polV!=null){
                             int t=0;
-                            while(t<polV.length && polV[t]!=null){
+                            while(t<polV.length){
                                 System.out.println((t+1)+". "+polV[t]);
                                 t++;
                             }
