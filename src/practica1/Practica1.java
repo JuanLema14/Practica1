@@ -38,33 +38,35 @@ public class Practica1 {
                 case '2':
                      if(polV!=null){
                         System.out.println("Ingrese el numero corrrespondiente al polinomio A: ");
-                        int aPosicion = Integer.parseInt(leer.next());
+                        int aPosicion = leer.nextInt();
                         System.out.println("Ingrese el numero corrrespondiente al polinomio A: ");
-                        int bPosicion =Integer.parseInt( leer.next());
+                        int bPosicion =leer.nextInt();
                         PolinomioVectorForma2 a = polV[aPosicion];
                         PolinomioVectorForma2 b = polV[bPosicion];
                         
                         PolinomioVectorForma2 polinomioM = new PolinomioVectorForma2();
                         polinomioM=obj.Multiplicar(a,b);
                         System.out.println("El Resultado de A + B :");
-                        System.out.println(polinomioM);
+                        //System.out.println(polinomioM);
                         
-                        PolinomioVectorForma2[] nuevoPolV = new PolinomioVectorForma2[polV.length+1];
+                        /*PolinomioVectorForma2[] nuevoPolV = new PolinomioVectorForma2[polV.length+1];
                          for(int w = 0; w<nuevoPolV.length; w++){
                            nuevoPolV[w]=polV[w];
                          }
                          nuevoPolV[nuevoPolV.length] = polinomioM;
-                         polV = nuevoPolV;
+                         polV = nuevoPolV;*/
                         
                     }else{
                         System.out.println("aun no ingresa los polinomios");
                     }
                     break;
                 case '3':
-                    if(polinomix!=null){
-                        polinomioD=objt.Derivar();
+                    if(polV!=null){
+                        System.out.println("Ingrese el numero del polinomio que desea Derivar: ");
+                        int PosD =leer.nextInt();
+                        PolinomioVectorForma2 a = polV[PosD];
                     }else{
-                        System.out.println("aun no ingresa los polinomios");
+                        System.out.println("aun no ingresa los polinomios"); 
                     }
                     break;
                 case '4':
