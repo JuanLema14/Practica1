@@ -20,8 +20,8 @@ public class Practica1 {
             switch(opc){
                 case '1':
                     try{
-                                          System.out.println("Ingrese la cantidad de polinomios a agregar (Minimo 10)");
-                    cantpol=leer.nextInt();  
+                        System.out.println("Ingrese la cantidad de polinomios a agregar (Minimo 10)");
+                        cantpol=leer.nextInt();  
                     }catch(Exception e){
                         System.out.println("---------------------------------");
                         System.out.println("----------Valor erroneo----------");
@@ -56,12 +56,9 @@ public class Practica1 {
                         System.out.println("El Resultado de A + B :");
                         System.out.println(obj.Multiplicar(a,b));
                         
-                        PolinomioVectorForma2[] nuevoPolV = new PolinomioVectorForma2[polV.length+1];
-                         for(int w = 0; w<nuevoPolV.length; w++){
-                           nuevoPolV[w]=polV[w];
-                         }
-                         nuevoPolV[nuevoPolV.length] = polinomioM;
-                         polV = nuevoPolV;
+                        polinomioM=obj.Multiplicar(a,b);
+                        polV[cantpol]=polinomioM;
+                        cantpol+=1;
                         
                     }else{
                         System.out.println("aun no ingresa los polinomios");
@@ -76,6 +73,9 @@ public class Practica1 {
                         PolinomioVectorForma2 Derivado =new PolinomioVectorForma2();
                         Derivado=obj.Derivar(PDerivar);
                         System.out.println(Derivado);
+                        
+                        polV[cantpol]=Derivado;
+                        cantpol+=1;
                     }else{
                         System.out.println("aun no ingresa los polinomios"); 
                     }
