@@ -64,7 +64,11 @@ public class Practica1 {
                     if(polV!=null){
                         System.out.println("Ingrese el numero del polinomio que desea Derivar: ");
                         int PosD =leer.nextInt();
-                        PolinomioVectorForma2 a = polV[PosD];
+                        PolinomioVectorForma2 PDerivar= new PolinomioVectorForma2();
+                        PDerivar = polV[PosD];
+                        PolinomioVectorForma2 Derivado =new PolinomioVectorForma2();
+                        Derivado=obj.Derivar(PDerivar);
+                        System.out.println(Derivado);
                     }else{
                         System.out.println("aun no ingresa los polinomios"); 
                     }
