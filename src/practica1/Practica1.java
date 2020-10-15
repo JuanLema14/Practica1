@@ -35,16 +35,10 @@ public class Practica1 {
                             polinomio=leer.next();
                             pol=obj.crearVector(polinomio);
                             polV[i]=pol;
-                            /*if(polinomix!=null){
-                                verificar=objt.verificarExponente(pol);
-                            }
-                            if(verificar==false){
-                                System.out.println("Recuerde no ingresar exponentes repetidos");
-                            }else{*/
-                                i++;
-                            //}
+                            i++;
                             
                         }
+                        i=0;
                     }else{
                         System.out.println("Recuerde que debe agregar 10 como minimo");
                     }
@@ -53,15 +47,14 @@ public class Practica1 {
                      if(polV!=null){
                         System.out.println("Ingrese el numero corrrespondiente al polinomio A: ");
                         int aPosicion = leer.nextInt();
-                        System.out.println("Ingrese el numero corrrespondiente al polinomio A: ");
+                        System.out.println("Ingrese el numero corrrespondiente al polinomio B: ");
                         int bPosicion =leer.nextInt();
                         PolinomioVectorForma2 a = polV[aPosicion-1];
                         PolinomioVectorForma2 b = polV[bPosicion-1];
                         
                         PolinomioVectorForma2 polinomioM = new PolinomioVectorForma2();
-                        polinomioM=obj.Multiplicar(a,b);
                         System.out.println("El Resultado de A + B :");
-                        System.out.println(polinomioM);
+                        System.out.println(obj.Multiplicar(a,b));
                         
                         /*PolinomioVectorForma2[] nuevoPolV = new PolinomioVectorForma2[polV.length+1];
                          for(int w = 0; w<nuevoPolV.length; w++){
@@ -134,6 +127,7 @@ public class Practica1 {
                     
                     break;
                 case '6':
+                    System.out.println("Gracias, vuelva pronto");
                     break;
             }
         }while(opc!='6'); 
