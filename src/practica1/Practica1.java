@@ -56,12 +56,12 @@ public class Practica1 {
                         System.out.println("El Resultado de A + B :");
                         System.out.println(obj.Multiplicar(a,b));
                         
-                        /*PolinomioVectorForma2[] nuevoPolV = new PolinomioVectorForma2[polV.length+1];
+                        PolinomioVectorForma2[] nuevoPolV = new PolinomioVectorForma2[polV.length+1];
                          for(int w = 0; w<nuevoPolV.length; w++){
                            nuevoPolV[w]=polV[w];
                          }
                          nuevoPolV[nuevoPolV.length] = polinomioM;
-                         polV = nuevoPolV;*/
+                         polV = nuevoPolV;
                         
                     }else{
                         System.out.println("aun no ingresa los polinomios");
