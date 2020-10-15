@@ -4,7 +4,7 @@ import java.util.Scanner;
 public class Practica1 {
     
     static PolinomioVectorForma2 pol;
-    static PolinomioVectorForma2[] polV=new PolinomioVectorForma2[20];
+    static PolinomioVectorForma2[] polV=new PolinomioVectorForma2[30];
     static Scanner leer =new Scanner(System.in);
     
     public static void main(String[] args) {
@@ -19,21 +19,25 @@ public class Practica1 {
                 case '1':
                     System.out.println("Ingrese la cantidad de polinomios a agregar (Minimo 10)");
                     cantpol=leer.nextInt();
-                    while(i<cantpol){
-                        String polinomio="";
-                        System.out.println("Ingrese un polinomio(recuerde no repetir exponentes)");
-                        polinomio=leer.next();
-                        pol=obj.crearVector(polinomio);
-                        polV[i]=pol;
-                        /*if(polinomix!=null){
-                            verificar=objt.verificarExponente(pol);
-                        }
-                        if(verificar==false){
-                            System.out.println("Recuerde no ingresar exponentes repetidos");
-                        }else{*/
-                            i++;
-                        //}
+                    if(cantpol>=10){
+                        while(i<cantpol){
+                            String polinomio="";
+                            System.out.println("Ingrese un polinomio(recuerde no repetir exponentes)");
+                            polinomio=leer.next();
+                            pol=obj.crearVector(polinomio);
+                            polV[i]=pol;
+                            /*if(polinomix!=null){
+                                verificar=objt.verificarExponente(pol);
+                            }
+                            if(verificar==false){
+                                System.out.println("Recuerde no ingresar exponentes repetidos");
+                            }else{*/
+                                i++;
+                            //}
                             
+                        }
+                    }else{
+                        System.out.println("Recuerde que debe agregar 10 como minimo");
                     }
                     break;
                 case '2':
@@ -42,8 +46,8 @@ public class Practica1 {
                         int aPosicion = leer.nextInt();
                         System.out.println("Ingrese el numero corrrespondiente al polinomio A: ");
                         int bPosicion =leer.nextInt();
-                        PolinomioVectorForma2 a = polV[aPosicion];
-                        PolinomioVectorForma2 b = polV[bPosicion];
+                        PolinomioVectorForma2 a = polV[aPosicion-1];
+                        PolinomioVectorForma2 b = polV[bPosicion-1];
                         
                         PolinomioVectorForma2 polinomioM = new PolinomioVectorForma2();
                         polinomioM=obj.Multiplicar(a,b);
@@ -66,7 +70,7 @@ public class Practica1 {
                         System.out.println("Ingrese el numero del polinomio que desea Derivar: ");
                         int PosD =leer.nextInt();
                         PolinomioVectorForma2 PDerivar= new PolinomioVectorForma2();
-                        PDerivar = polV[PosD];
+                        PDerivar = polV[PosD-1];
                         PolinomioVectorForma2 Derivado =new PolinomioVectorForma2();
                         Derivado=obj.Derivar(PDerivar);
                         System.out.println(Derivado);
@@ -82,7 +86,7 @@ public class Practica1 {
                         System.out.println("Ingrese el el número correspondiente al polinomio que quiere evaluar");
                         int p=leer.nextInt();
                         double cantidadEvaluar;
-                        cantidadEvaluar = obj.Evaluar(polV[p], x);
+                        cantidadEvaluar = obj.Evaluar(polV[p-1], x);
                         System.out.println("El resultado de la evaluación es: "+cantidadEvaluar);
                     }else{
                         System.out.println("aun no ingresa los polinomios");
