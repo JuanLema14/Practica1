@@ -172,7 +172,6 @@ public class PolinomioVectorForma2 {
         }
         
         PolinomioVF2= new PolinomioVectorForma2(loquesea);
-        System.out.println(PolinomioVF2);
         return PolinomioVF2;
     }
     
